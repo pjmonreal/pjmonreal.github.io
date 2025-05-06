@@ -35,5 +35,44 @@
         </footer>
     </main>
 
+    <script>
+      // List of header images
+      const headerImages = [
+        'headers/IMG_5580.jpg',
+        'headers/IMG_3524.jpg',
+        'headers/IMG_3438.jpg',
+        'headers/IMG_3421.jpg',
+        'headers/IMG_0893.jpg',
+        'headers/IMG_0622.jpg',
+        'headers/IMG_0587.jpg',
+        'headers/IMG_0582.jpg',
+        'headers/IMG_0555.jpg',
+        'headers/IMG_0532.jpg',
+        'headers/IMG_0367.jpg',
+        'headers/IMG_0355.jpg',
+        'headers/IMG_0140.jpg',
+        'headers/IMG_0529.jpg',
+        'headers/IMG_9807.jpg',
+        'headers/IMG_9717.jpg',
+        'headers/IMG_9706.jpg',
+        'headers/IMG_9635.jpg',
+        'headers/IMG_8580.jpg',
+        'headers/IMG_8523.jpg',
+        'headers/IMG_8508.jpg',
+        'headers/IMG_8415.jpg',
+        'headers/IMG_8267.jpg',
+        'headers/IMG_8016.jpg',
+        'headers/IMG_7228.jpg',
+        'headers/IMG_7211.jpg',
+        'headers/IMG_7208.jpg'
+      ];
+      // Pick a random image
+      const randomImage = headerImages[Math.floor(Math.random() * headerImages.length)];
+      // Set as background for .hero-header
+      window.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.hero-header').style.backgroundImage = `url('${randomImage}')`;
+      });
+    </script>
+
 </body>
 </html>

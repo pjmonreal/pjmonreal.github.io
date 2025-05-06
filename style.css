@@ -15,7 +15,6 @@ body {
 }
 
 .hero-header {
-    background-image: url('IMG_0529.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
