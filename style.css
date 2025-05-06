@@ -1,49 +1,54 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-    color: #333;
-}
-
-header {
-    background-color: #00796b;
+.hero-header {
+    background-image: url('IMG_0529.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     color: white;
-    padding: 20px;
-    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-header h1 {
-    margin: 0 0 10px 0;
+.header-left {
+    max-width: 60%;
 }
 
-nav a {
-    margin: 0 10px;
+.header-left h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.header-left p {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-right a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
-nav a.active {
-    font-weight: bold;
+.header-right a.active,
+.header-right a:hover {
     border-bottom: 2px solid white;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
+@media (max-width: 768px) {
+    .hero-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-section {
-    padding: 40px;
-    max-width: 800px;
-    margin: auto;
+    .header-right {
+        margin-top: 10px;
+    }
 }
-
-footer {
-    background-color: #004d40;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 40px;
-}
-
