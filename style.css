@@ -23,6 +23,7 @@ body {
     border: 5px solid var(--main-purple);
     box-sizing: border-box;
     position: relative;
+    padding-top: 110px; /* space for fixed bar */
 }
 
 .header-bar {
@@ -82,10 +83,6 @@ body {
     color: #fff;
     text-decoration: none;
     transform: translateY(-2px);
-}
-
-.hero-header {
-    padding-top: 110px; /* space for fixed bar */
 }
 
 @media (max-width: 900px) {
