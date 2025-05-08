@@ -5,15 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pachanga! - Patrick J. Monreal</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2em;
+            margin-left: auto;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .header-right {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right.active {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header class="hero-header">
         <div class="header-bar">
             <div class="header-left">
-                <h1>Patrick J. Monreal</h1>
+                <h1>Patrick Monreal</h1>
                 <p>oceanography, trace metals, hydrothermal vents, astrobiology</p>
             </div>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
             <nav class="header-right">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Me</a>
@@ -23,6 +46,13 @@
             </nav>
         </div>
     </header>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.header-right');
+            nav.classList.toggle('active');
+        }
+    </script>
 
     <main>
         <section>
