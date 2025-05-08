@@ -189,3 +189,14 @@ section {
     color: #222;
     max-width: 900px;
 }
+
+h2.home-title, h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
