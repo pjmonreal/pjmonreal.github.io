@@ -13,7 +13,7 @@
             margin-left: auto;
             color: white;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .hamburger {
                 display: block;
             }
@@ -65,24 +65,65 @@
                 margin-bottom: 150px;
             }
         }
+        html {
+            scroll-behavior: smooth;
+        }
+        .jump-nav {
+            margin: 64px 0 150px 0;
+            font-size: 1.4em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .jump-nav strong {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .jump-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .jump-list a {
+            color: grey;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+        .jump-list a:hover {
+            color: #6a1b9a;
+        }
+        @media (max-width: 900px) {
+            .jump-nav {
+                font-size: 1.05em;
+            }
+            .jump-nav strong {
+                font-size: 1.05em;
+            }
+            .jump-list a {
+                font-size: 1.05em;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header class="hero-header">
         <div class="header-bar">
-            <div class="header-left">
+        <div class="header-left">
                 <h1>Patrick Monreal</h1>
                 <p>oceanography, trace metals, hydrothermal vents, astrobiology</p>
-            </div>
+        </div>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
-            <nav class="header-right">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Me</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="publications.html">Publications</a>
-                <a href="pachanga.html">Pachanga!</a>
-            </nav>
+        <nav class="header-right">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="pachanga.html">Pachanga!</a>
+        </nav>
         </div>
     </header>
 
@@ -91,13 +132,47 @@
             const nav = document.querySelector('.header-right');
             nav.classList.toggle('active');
         }
+        // Offset scroll for anchor links to account for header
+        document.addEventListener('DOMContentLoaded', function() {
+            function getOffset() {
+                if (window.innerWidth <= 900) {
+                    return 200;
+                } else {
+                    return 150;
+                }
+            }
+            document.querySelectorAll('.jump-list a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        });
     </script>
 
     <main>
-        <section>
+        <div class="jump-nav">
+            <strong>Jump to a project:</strong>
+            <div class="jump-list">
+                <a href="#hydrothermal-iron">Hydrothermal Iron in Southern Ocean</a>
+                <a href="#siderophores-enso">Siderophores & ENSO at the Equator</a>
+                <a href="#whale-poop">Iron in Whale Poop</a>
+                <a href="#hydrothermal-siderophores">Siderophores in Hydrothermal Vents</a>
+                <a href="#n2o-odz">Nitrous Oxide in ODZs</a>
+                <a href="#mercury-bioaccumulation">Mercury Bioaccumulation in Soils</a>
+            </div>
+        </div>
+<section>
             <h2 class="home-title">CURRENT PROJECTS</h2>
             <!-- Project 1: Hydrothermal sources of iron to the Southern Ocean -->
-            <div class="project-flex first">
+            <div class="project-flex first" id="hydrothermal-iron">
                 <div class="project-img">
                     <img src="seamount.png" alt="3D Seamount Plot" style="width:120%;max-width:400px;transform: translateY(20%);">
                 </div>
@@ -109,7 +184,7 @@
             </div>
 
             <!-- Project 2: Siderophores and iron cycling during La Niña/El Niño at the Equator -->
-            <div class="project-flex reverse">
+            <div class="project-flex reverse" id="siderophores-enso">
                 <div class="project-img">
                     <img src="250412_SST_cruisetrack_ONI_2 copy.png" alt="Pacific ENSO Map" style="width:120%;max-width:400px;transform: translateY(20%);">
                 </div>
@@ -121,9 +196,9 @@
             </div>
 
             <!-- Project 3: Iron and Ligands in Whale Poop -->
-            <div class="project-flex">
+            <div class="project-flex" id="whale-poop">
                 <div class="project-img">
-                    <img src="WHALE_vertical.png" alt="Whale Krill Cycle Diagram" style="width:90%;max-width:400px;transform: translateY(10%);">
+                    <img src="WHALE_vertical.png" alt="Whale Krill Diagram" style="width:90%;max-width:400px;transform: translateY(10%);">
                 </div>
                 <div class="project-text">
                     <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Iron and Ligands in Whale Poop</h3>
@@ -137,7 +212,7 @@
             <h2 class="home-title">PAST PROJECTS</h2>
 
             <!-- Project 4: First characterization of siderophores in hydrothermal plumes -->
-            <div class="project-flex reverse">
+            <div class="project-flex reverse" id="hydrothermal-siderophores">
                 <div class="project-img">
                     <img src="MAR_siderophores.png" alt="Siderophores Heatmap" style="width:100%;max-width:400px;transform: translateY(20%);">
                 </div>
@@ -150,7 +225,7 @@
             </div>
 
             <!-- Project 5: Nitrous Oxide Cycling in Oxygen-Deficient Zones -->
-            <div class="project-flex">
+            <div class="project-flex" id="n2o-odz">
                 <div class="project-img">
                     <img src="ETNP_N2O.jpg" alt="ETNP N2O Diagram" style="width:100%;max-width:400px;transform: translateY(100%);">
                 </div>
@@ -163,7 +238,7 @@
             </div>
 
             <!-- Project 6: Mercury Bioaccumulation in Invertebrates and Soils -->
-            <div class="project-flex reverse">
+            <div class="project-flex reverse" id="mercury-bioaccumulation">
                 <div class="project-img">
                     <img src="JASPERRIDGE.jpg" alt="Jasper Ridge Fieldwork" style="width:40%;max-width:400px;transform: translateY(25%);">
                 </div>
@@ -172,11 +247,11 @@
                     <p class="intro-text">My first research experience was working in the lab of Dr. Elizabeth Hadly in the Department of Biology at Stanford. I conducted field work at Jasper Ridge Biological Preserve, sampling soils and invertebrates to investigate mercury bioaccumulation across diverse ecosystems in the San Francisco Bay Area. Mercury is important to the gold amalgamation process, so mercury mining was prevalent in this area following the Gold Rush. I also conducted eDNA analyses of the soils and bulk invertebrate community to see how closely they align.</p>
                 </div>
             </div>
-        </section>
+</section>
 
-        <footer>
-            <p>&copy; 2025 Patrick J. Monreal</p>
-        </footer>
+<footer>
+    <p>&copy; 2025 Patrick J. Monreal</p>
+</footer>
     </main>
 
     <script>
