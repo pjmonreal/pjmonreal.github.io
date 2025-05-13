@@ -26,6 +26,42 @@
                 display: flex;
             }
         }
+        .home-title {
+            text-align: left;
+            margin-left: 0;
+        }
+        .project-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+        .project-flex.reverse {
+            flex-direction: row-reverse;
+        }
+        .project-img {
+            flex: 1 1 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-text {
+            flex: 2 1 500px;
+        }
+        .project-flex.first {
+            margin-top: 20px;
+        }
+        @media (max-width: 900px) {
+            .project-flex, .project-flex.reverse {
+                flex-direction: column !important;
+                gap: 20px;
+            }
+            .project-img, .project-text {
+                flex: unset;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -57,33 +93,76 @@
     <main>
         <section>
             <h2 class="home-title">CURRENT PROJECTS</h2>
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Hydrothermal sources of iron to the Southern Ocean</h3>
-            <p class="intro-text">The Southern Ocean is the largest high-nutrient, low-chlorophyll (HNLC) region on Earth. Even small inputs of iron can seed massive phytoplankton blooms, shaping global carbon cycling. While hydrothermal vents are increasingly recognized as important iron sources to the deep ocean, direct evidence linking them to surface productivity in HNLC regions remains scarce.<br><br>
-            From December 2024 to February 2025, I sailed aboard the RVIB Nathaniel B. Palmer to the Australian-Antarctic Ridge (AAR) to investigate iron sources fueling one of the Southern Ocean's largest recurring blooms. Our team identified two promising near-surface hydrothermal features: an active seamount and a large particle plume along the ridge. We have hundreds of samples to analyze, but the proximity of this hydrothermalism to surface productivity is compelling. More to come!<br><br><br><br></p>
+            <!-- Project 1: Hydrothermal sources of iron to the Southern Ocean -->
+            <div class="project-flex first">
+                <div class="project-img">
+                    <img src="seamount.png" alt="3D Seamount Plot" style="width:120%;max-width:400px;transform: translateY(20%);">
+                </div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Hydrothermal sources of iron to the Southern Ocean</h3>
+                    <p class="intro-text">The Southern Ocean is the largest high-nutrient, low-chlorophyll (HNLC) region on Earth. Even small inputs of iron can seed massive phytoplankton blooms, shaping global carbon cycling. While hydrothermal vents are increasingly recognized as important iron sources to the deep ocean, direct evidence linking them to surface productivity in HNLC regions remains scarce.<br><br>
+                    From December 2024 to February 2025, I sailed aboard the <em>RVIB Nathaniel B. Palmer</em> to the Australian-Antarctic Ridge (AAR) to investigate iron sources fueling one of the Southern Ocean's <a href="https://doi.org/10.1029/2023JD038843">largest recurring blooms</a>. Our team identified two promising near-surface hydrothermal features: an active seamount and a large particle plume along the ridge. We have hundreds of samples to analyze, but the proximity of this hydrothermalism to surface productivity is compelling. More to come!<br><br></p>
+                </div>
+            </div>
 
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Siderophores and iron cycling during La Niña/El Niño at the Equator</h3>
-            <p class="intro-text">I am currently involved in the SCOPE-Gradients program, a series of five cruises across the North Pacific aimed at understanding how biogeochemical processes shift across major oceanographic transition zones. I sailed on the R/V Thomas G. Thompson for Gradients 5 in January 2023, which, like Gradients 4, went from the nitrogen–starved North Pacific Subtropical Gyre to the iron-deplete waters of the Equatorial Pacific. While the two cruises shared a transect, they captured starkly different equatorial states: Gradients 4 occurred during a rare three-year La Niña, marked by strong equatorial upwelling, while Gradients 5 took place during an ENSO-neutral period just before the onset of El Niño. The different ENSO conditions provided a natural experiment to examine how iron is cycled under contrasting upwelling regimes.<br><br>
-            Siderophores, microbially-produced strong-binding ligands, revealed distinct iron biogeochemistry between the two cruises. They dominated the iron-ligand pool during Gradients 5 but were minor components in Gradients 4. We think differences in upwelling strength may explain this — weaker upwelling during ENSO-neutral conditions may increase the residence time of dissolved iron, favoring microbial strategies that rely on efficient recycling, like siderophore production. Analyses are ongoing, but this work is offering a new perspective on how iron moves through the Equatorial Pacific HNLC — a topic that's becoming increasingly relevant as ENSO variability evolves in a warming climate.<br><br><br><br></p>
+            <!-- Project 2: Siderophores and iron cycling during La Niña/El Niño at the Equator -->
+            <div class="project-flex reverse">
+                <div class="project-img">
+                    <img src="250412_SST_cruisetrack_ONI_2 copy.png" alt="Pacific ENSO Map" style="width:120%;max-width:400px;transform: translateY(20%);">
+                </div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Siderophores and iron cycling during La Niña/El Niño at the Equator</h3>
+                    <p class="intro-text">I am currently involved in the SCOPE-Gradients program, a series of five cruises across the North Pacific aimed at understanding how biogeochemical processes shift across major oceanographic transition zones. I sailed on the <em>R/V Thomas G. Thompson</em> for Gradients 5 in January 2023, which, like Gradients 4, went from the nitrogen–starved North Pacific Subtropical Gyre to the iron-deplete waters of the Equatorial Pacific. While the two cruises shared a transect, they captured starkly different equatorial states: Gradients 4 occurred during a rare <a href="https://doi.org/10.1029/2023JD038843">three-year La Niña</a>, marked by strong equatorial upwelling, while Gradients 5 took place during an ENSO-neutral period just before the onset of El Niño. The different ENSO conditions provided a natural experiment to examine how iron is cycled under contrasting upwelling regimes.<br><br>
+                    Siderophores, microbially-produced strong-binding ligands, revealed distinct iron biogeochemistry between the two cruises. They dominated the iron-ligand pool during Gradients 5 but were minor components in Gradients 4. We think differences in upwelling strength may explain this — weaker upwelling during ENSO-neutral conditions may increase the residence time of dissolved iron, favoring microbial strategies that rely on efficient recycling, like siderophore production. Analyses are ongoing, but this work is offering a new perspective on how iron moves through the Equatorial Pacific HNLC — a topic that's becoming increasingly relevant as ENSO variability evolves in a warming climate.<br><br></p>
+                </div>
+            </div>
+
+            <!-- Project 3: Iron and Ligands in Whale Poop -->
+            <div class="project-flex">
+                <div class="project-img">
+                    <img src="WHALE_vertical.png" alt="Whale Krill Cycle Diagram" style="width:120%;max-width:400px;transform: translateY(10%);">
+                </div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Iron and Ligands in Whale Poop</h3>
+                    <p class="intro-text">The 20th century witnessed the demise of &gt;90% of humpback, fin, and blue whales in the Southern Ocean. Contrary to ecological expectations, populations of Antarctic krill — their prey — have also declined dramatically following this intense whaling in the Southern Hemisphere. While several factors are at play, like changes in sea ice due to climate change, some have proposed that great whales were vital to recycling micronutrients like iron for the base of the Southern Ocean food chain.<br><br>
+                    While we knew that whale feces contains large amounts of iron (~10<sup>−6</sup>–10<sup>−5</sup> moles Fe relative to the 10<sup>−12</sup>–10<sup>−9</sup> moles Fe in typical Southern Ocean surface seawater), the bioavailability and stability of that iron was unknown. So, I measured the metal and ligand content of humpback whale excrement from the Southern Ocean and blue whale excrement from the California Current. Not only did we find a very bioavailable iron pool, we found a lot of copper, which makes sense because krill blood is copper-based. The excreted copper was bound to novel strong-binding compounds, giving insight into how the microbiome of the whale gut deals with copper stress.<br><br>
+                    Overall, the results showed that whales, at their previous population levels, recycled a lot of bioavailable iron. Since they feed near phytoplankton blooms, this recycled iron could have been important to regional biogeochemistry. Read more at the citation below!<br><br>
+                    Monreal, P.J., Savoca, M.S., Babcock-Adams, L. Moore, L.E., Ruacho, A., Hull, D., Pallin, L.J., Nichols, R.C., Calambokidis, J., Resing, J.A., Friedlaender, A.S., Goldbogen, J. & Bundy, R.M. Organic ligands in whale excrement support iron availability and reduce copper toxicity to the surface ocean. <em>Communications Earth & Environment</em> 6, 20 (2025). <a href="https://doi.org/10.1038/s43247-024-01965-9">https://doi.org/10.1038/s43247-024-01965-9</a><br><br></p>
+                </div>
+            </div>
 
             <h2 class="home-title">PAST PROJECTS</h2>
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Iron and Ligands in Whale Poop.</h3>
-            <p class="intro-text">The 20th century witnessed the demise of &gt;90% of humpback, fin, and blue whales in the Southern Ocean. Contrary to ecological expectations, populations of Antarctic krill — their prey — have also declined dramatically following this intense whaling in the Southern Hemisphere. While several factors are at play, like changes in sea ice due to climate change, some have proposed that great whales were vital to recycling micronutrients like iron for the base of the Southern Ocean food chain.<br><br>
-            While we knew that whale feces contains large amounts of iron (~10<sup>−6</sup>–10<sup>−5</sup> moles Fe relative to the 10<sup>−12</sup>–10<sup>−9</sup> moles Fe in typical Southern Ocean surface seawater), the bioavailability and stability of that iron was unknown. So, I measured the metal and ligand content of humpback whale excrement from the Southern Ocean and blue whale excrement from the California Current. Not only did we find a very bioavailable iron pool, we found a lot of copper, which makes sense because krill blood is copper-based. The excreted copper was bound to novel strong-binding compounds, giving insight into how the microbiome of the whale gut deals with copper stress.<br><br>
-            Overall, the results showed that whales, at their previous population levels, recycled a lot of bioavailable iron. Since they feed near phytoplankton blooms, this recycled iron could have been important to regional biogeochemistry. Read more at the citation below!<br><br>
-            Monreal, P.J., Savoca, M.S., Babcock-Adams, L. Moore, L.E., Ruacho, A., Hull, D., Pallin, L.J., Nichols, R.C., Calambokidis, J., Resing, J.A., Friedlaender, A.S., Goldbogen, J. & Bundy, R.M. Organic ligands in whale excrement support iron availability and reduce copper toxicity to the surface ocean. Communications Earth & Environment 6, 20 (2025). https://doi.org/10.1038/s43247-024-01965-9<br><br><br><br></p>
 
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">First characterization of siderophores in hydrothermal plumes</h3>
-            <p class="intro-text">Hydrothermal vents are a large and newly-recognized source of dissolved iron to the global ocean. Because iron is insoluble in seawater, it was previously thought that most of the iron that was emitted from vents quickly precipitates out of solution. However, in the last decade, oceanographers have realized that dissolved iron can be transported thousands of kilometers across ocean basins from vents, making these systems extremely important to understand. The mechanisms that stabilize and govern the fate of hydrothermally-derived iron have remained elusive.<br><br>
-            Organic ligands are one possible stabilizing agent, so during my NOAA Hollings internship, we analyzed mass spectrometry data for siderophore and other metallophores in hydrothermal plume samples from the Mid-Cayman Rise and Mid-Atlantic Ridge. Siderophores are strong-binding ligands that microbes produce to get iron. They are so strong that they can solubilize mineral iron, making siderophores a potential strategy for iron acquisition in hydrothermal environments. My collaborators and I made the first identification of siderophores in a hydrothermal plume — an important first step in understanding the role of ligands in hydrothermal transport.<br><br>
-            Hoffman, C.L.*, Monreal, P.J.*, Albers, J.B., Lough, A.J.M., Santoro, A.E., Mellett, T., Buck, K.N., Tagliabue, A., Lohan, M.C., Resing, J.A., & Bundy, R.M. Microbial strong organic-ligand production is tightly coupled to iron in hydrothermal plumes. Biogeosciences, 21, 22, 5233–5246 (2024). https://doi.org/10.5194/bg-21-5233-2024<br><br><br><br></p>
+            <!-- Project 4: First characterization of siderophores in hydrothermal plumes -->
+            <div class="project-flex reverse">
+                <div class="project-img"><!-- Placeholder for image --></div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">First characterization of siderophores in hydrothermal plumes</h3>
+                    <p class="intro-text">Hydrothermal vents are a large and newly-recognized source of dissolved iron to the global ocean. Because iron is insoluble in seawater, it was previously thought that most of the iron that was emitted from vents quickly precipitates out of solution. However, in the last decade, oceanographers have realized that dissolved iron can be transported thousands of kilometers across ocean basins from vents, making these systems extremely important to understand. The mechanisms that stabilize and govern the fate of hydrothermally-derived iron have remained elusive.<br><br>
+                    Organic ligands are one possible stabilizing agent, so during my NOAA Hollings internship, we analyzed mass spectrometry data for siderophore and other metallophores in hydrothermal plume samples from the Mid-Cayman Rise and Mid-Atlantic Ridge. Siderophores are strong-binding ligands that microbes produce to get iron. They are so strong that they can solubilize mineral iron, making siderophores a potential strategy for iron acquisition in hydrothermal environments. My collaborators and I made the first identification of siderophores in a hydrothermal plume — an important first step in understanding the role of ligands in hydrothermal transport.<br><br>
+                    Hoffman, C.L.*, Monreal, P.J.*, Albers, J.B., Lough, A.J.M., Santoro, A.E., Mellett, T., Buck, K.N., Tagliabue, A., Lohan, M.C., Resing, J.A., & Bundy, R.M. Microbial strong organic-ligand production is tightly coupled to iron in hydrothermal plumes. <em>Biogeosciences</em>, 21, 22, 5233–5246 (2024). <a href="https://doi.org/10.5194/bg-21-5233-2024">https://doi.org/10.5194/bg-21-5233-2024</a><br><br></p>
+                </div>
+            </div>
 
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Nitrous Oxide Cycling in Oxygen-Deficient Zones</h3>
-            <p class="intro-text">Nitrous oxide (N<sub>2</sub>O) is a greenhouse gas that is more than 200 times more potent than CO<sub>2</sub>, and oceanic sources account for up to 1/3 of the total natural flux to the atmosphere. In oxygen-deficient zones (ODZs) like the Eastern Tropical North Pacific (ETNP), N<sub>2</sub>O can be produced and consumed by several biological processes. For my undergraduate thesis at Stanford, I measured, analyzed, and modeled nitrous oxide concentrations and isotopes from a 2016 cruise to the ETNP in order to examine sources of N<sub>2</sub>O cycling across this region.<br><br>
-            Read more at the citation below, but our work teased apart nitrifying and denitrifying processes in the ODZ, while also connecting high N<sub>2</sub>O concentrations to a mesoscale eddy.<br><br>
-            Monreal, P.J., Kelly, C.L., Travis, N.M., & Casciotti, K.L. Identifying the sources and drivers of nitrous oxide accumulation in the eddy-influenced Eastern Tropical North Pacific oxygen-deficient zone. Global Biogeochemical Cycles, 36, e2022GB007310 (2022). https://doi.org/10.1029/2022GB007310<br><br><br><br></p>
+            <!-- Project 5: Nitrous Oxide Cycling in Oxygen-Deficient Zones -->
+            <div class="project-flex">
+                <div class="project-img"><!-- Placeholder for image --></div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Nitrous Oxide Cycling in Oxygen-Deficient Zones</h3>
+                    <p class="intro-text">Nitrous oxide (N<sub>2</sub>O) is a greenhouse gas that is more than 200 times more potent than CO<sub>2</sub>, and oceanic sources account for up to 1/3 of the total natural flux to the atmosphere. In oxygen-deficient zones (ODZs) like the Eastern Tropical North Pacific (ETNP), N<sub>2</sub>O can be produced and consumed by several biological processes. For my undergraduate thesis at Stanford, I measured, analyzed, and modeled nitrous oxide concentrations and isotopes from a 2016 cruise to the ETNP in order to examine sources of N<sub>2</sub>O cycling across this region.<br><br>
+                    Read more at the citation below, but our work teased apart nitrifying and denitrifying processes in the ODZ, while also connecting high N<sub>2</sub>O concentrations to a mesoscale eddy.<br><br>
+                    Monreal, P.J., Kelly, C.L., Travis, N.M., & Casciotti, K.L. Identifying the sources and drivers of nitrous oxide accumulation in the eddy-influenced Eastern Tropical North Pacific oxygen-deficient zone. <em>Global Biogeochemical Cycles</em>, 36, e2022GB007310 (2022). <a href="https://doi.org/10.1029/2022GB007310">https://doi.org/10.1029/2022GB007310</a><br><br></p>
+                </div>
+            </div>
 
-            <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Mercury Bioaccumulation in Invertebrates and Soils</h3>
-            <p class="intro-text">My first research experience was working in the lab of Dr. Elizabeth Hadly in the Department of Biology at Stanford. I conducted field work at Jasper Ridge Biological Preserve, sampling soils and invertebrates to investigate mercury bioaccumulation across diverse ecosystems in the San Francisco Bay Area. Mercury is important to the gold amalgamation process, so mercury mining was prevalent in this area following the Gold Rush. I also conducted eDNA analyses of the soils and bulk invertebrate community to see how closely they align.</p>
+            <!-- Project 6: Mercury Bioaccumulation in Invertebrates and Soils -->
+            <div class="project-flex reverse">
+                <div class="project-img"><!-- Placeholder for image --></div>
+                <div class="project-text">
+                    <h3 class="intro-text" style="color: grey; font-weight: bold; font-size: 1.4em;">Mercury Bioaccumulation in Invertebrates and Soils</h3>
+                    <p class="intro-text">My first research experience was working in the lab of Dr. Elizabeth Hadly in the Department of Biology at Stanford. I conducted field work at Jasper Ridge Biological Preserve, sampling soils and invertebrates to investigate mercury bioaccumulation across diverse ecosystems in the San Francisco Bay Area. Mercury is important to the gold amalgamation process, so mercury mining was prevalent in this area following the Gold Rush. I also conducted eDNA analyses of the soils and bulk invertebrate community to see how closely they align.</p>
+                </div>
+            </div>
         </section>
 
         <footer>
