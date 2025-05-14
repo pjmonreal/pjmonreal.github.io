@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Patrick J. Monreal</title>
+    <title>About - Patrick J. Monreal</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        .about-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+        .about-img {
+            flex: 1 1 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-text {
+            flex: 2 1 600px;
+        }
+        @media (max-width: 900px) {
+            .about-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .about-img, .about-text {
+                flex: unset;
+                width: 100%;
+            }
+        }
         .hamburger {
             display: none;
             cursor: pointer;
@@ -26,10 +52,15 @@
                 display: flex;
             }
         }
+        .section-spacing {
+            margin-top: 2em;
+        }
+        .half-section-spacing {
+            margin-top: 1em;
+        }
     </style>
 </head>
 <body>
-
     <header class="hero-header">
         <div class="header-bar">
             <div class="header-left">
@@ -46,25 +77,225 @@
             </nav>
         </div>
     </header>
-
     <script>
         function toggleMenu() {
             const nav = document.querySelector('.header-right');
             nav.classList.toggle('active');
         }
     </script>
-
     <main>
-        <section>
-            <h2>About Me</h2>
-            <p>Your bio and background information here.</p>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">About Me</h2>
+                <p class="intro-text section-spacing">I am a third-year Ph.D. student at the University of Washington School of Oceanography, originally from California's Central Valley. My research focuses on how our changing oceans and climate are shaped by chemistry. I study trace metal biogeochemistry and organic metal-binding ligands in the marine environment, and I have experience in nitrogen cycling and stable isotopes. Over the past few years, I've participated in several major research cruises, performing trace metal-clean sampling and experiments. I am also a dual-title degree student in the Astrobiology Program at UW.</p>
+                <p class="intro-text section-spacing">
+                    Check out snippets from my CV below, go to 
+                    <a href="projects.html" style="color: var(--main-purple); font-weight: bold; text-decoration: none;">Projects</a> 
+                    to see what I am currently working on, or click on 
+                    <a href="publications.html" style="color: var(--main-purple); font-weight: bold; text-decoration: none;">Publications</a> 
+                    to see a list of my published work or conference abstracts. You can contact me at pmonreal 'at' uw.edu for more information.
+                </p>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
         </section>
 
-        <footer>
-            <p>&copy; 2025 Patrick J. Monreal</p>
-        </footer>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Education</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div class="section-spacing">
+                        <strong>Ph.D. in Oceanography and Astrobiology</strong>, University of Washington (in progress)<br>
+                        <div style="margin-left: 2em;">
+                            Dissertation: <span style="font-style: italic;">Refining biotic controls on iron cycling in high-nutrient, low-chlorophyll regions through ligand analyses</span><br>
+                            Advisors: Randie Bundy and Joe Resing
+                        </div>
+                    </div>
+                    <div class="section-spacing">
+                        <strong>M.S. in Oceanography</strong>, University of Washington (2024)<br>
+                        <div style="margin-left: 2em;">
+                            Title: <span style="font-style: italic;">The Scoop on Poop: Characterizing the organic speciation of metals excreted by whales to describe their bioavailability</span><br>
+                            Advisors: Randie Bundy and Joe Resing
+                        </div>
+                    </div>
+                    <div class="section-spacing">
+                        <strong>B.S. with Honors in Earth Systems and Chemistry Minor</strong>, Stanford University (2022)<br>
+                        <div style="margin-left: 2em;">
+                            Honors Thesis: <span style="font-style: italic;">Identifying the sources and drivers of variable nitrous oxide concentrations across the Eastern Tropical North Pacific</span><br>
+                            Advisor: Karen Casciotti
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Fellowships & Awards</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div class="section-spacing" style="font-weight: bold; margin-bottom: 0.5em;">Graduate School</div>
+                    <div class="section-spacing half-section-spacing">
+                        <span style="font-weight: bold;">2023</span> Ford Foundation Pre-Doctoral Fellow, <span style="font-style: italic;">National Academies of Sciences, Engineering, and Medicine</span><br>
+                        <span style="font-weight: bold;">2022</span> Program in Climate Change Graduate Fellow, <span style="font-style: italic;">University of Washington</span><br>
+                        <span style="font-weight: bold;">2022</span> Achievement Rewards for College Scientists (ARCS) Scholar, <span style="font-style: italic;">ARCS Foundation Seattle Chapter</span>
+                    </div>
+                    <div class="section-spacing" style="font-weight: bold; margin-bottom: 0.5em;">Undergraduate & Earlier</div>
+                    <div class="section-spacing half-section-spacing">
+                        <span style="font-weight: bold;">2022</span> Firestone Medal for Excellence in Undergraduate Research, <span style="font-style: italic;">Stanford University</span><br>
+                        <span style="font-weight: bold;">2022</span> Dean's Award for Outstanding Undergraduate Academic Achievement, <span style="font-style: italic;">Stanford Earth</span><br>
+                        <span style="font-weight: bold;">2022</span> Award for Outstanding Service to the Earth Systems Program, <span style="font-style: italic;">Stanford Earth</span><br>
+                        <span style="font-weight: bold;">2020</span> Ernest F. Hollings Scholar, <span style="font-style: italic;">National Oceanic and Atmospheric Administration</span><br>
+                        <span style="font-weight: bold;">2020</span> Albert J. Hettinger Award for Scholarship, Athletics, and Service, <span style="font-style: italic;">Stanford Delta Kappa Epsilon</span><br>
+                        <span style="font-weight: bold;">2019</span> Camille and Henry Dreyfus Chemical Scholar, <span style="font-style: italic;">American Chemical Society</span><br>
+                        <span style="font-weight: bold;">2019</span> American Chemical Society Scholar, <span style="font-style: italic;">American Chemical Society</span><br>
+                        <span style="font-weight: bold;">2019</span> Latinos in Technology Scholar, <span style="font-style: italic;">Hispanic Foundation of Silicon Valley</span><br>
+                        <span style="font-weight: bold;">2018</span> National Merit and National Hispanic Scholar, <span style="font-style: italic;">College Board and National Merit Scholarship Corporation</span>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Research Roles</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div>
+                        <strong>planned Sept–Dec 2025</strong><br>
+                        Research Rotation<br>
+                        <span style="font-style: italic;">Origins & Habitability Lab at NASA JPL</span><br>
+                        Advisor: Laurie Barge
+                    </div>
+                    <div class="section-spacing">
+                        <strong>2022–present</strong><br>
+                        Graduate Student Researcher<br>
+                        <span style="font-style: italic;">University of Washington, School of Oceanography</span><br>
+                        Advisor: Randie Bundy and Joe Resing
+                    </div>
+                    <div class="section-spacing">
+                        <strong>Sept–Nov 2021</strong><br>
+                        Cruise Research Assistant<br>
+                        <span style="font-style: italic;">NOAA Cooperative Institute for Climate, Ocean, & Ecosystem Studies</span><br>
+                        Advisor: Joe Resing
+                    </div>
+                    <div class="section-spacing">
+                        <strong>May–Sept 2021</strong><br>
+                        Hollings Intern<br>
+                        <span style="font-style: italic;">NOAA Pacific Marine Environmental Laboratory and University of Washington, School Oceanography</span><br>
+                        Advisor: Randie Bundy and Joe Resing
+                    </div>
+                    <div class="section-spacing">
+                        <strong>Mar 2020–June 2022</strong><br>
+                        Undergraduate Researcher<br>
+                        <span style="font-style: italic;">Stanford University, Earth Systems Science Department</span><br>
+                        Advisor: Karen Casciotti
+                    </div>
+                    <div class="section-spacing">
+                        <strong>May–Sept 2019</strong><br>
+                        Summer Research Intern<br>
+                        <span style="font-style: italic;">Stanford University, Biology Department</span><br>
+                        Advisor: Elizabeth Hadly
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Research Interests</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div>Chemical Oceanography and Marine Biogeochemistry</div>
+                    <div>Organic Chemistry for the Earth Sciences</div>
+                    <div>Trace Metal Chemistry</div>
+                    <div>Microbes in Extreme Environments</div>
+                    <div>Applying Oceanography to Astrobiology (Ocean Worlds)</div>
+                    <div>Scientific Creative Writing</div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Publications & Abstracts</h2>
+                <p class="intro-text section-spacing">For a list of my publications and conference abstracts, please see the <a href="publications.html" style="color: var(--main-purple); font-weight: bold; text-decoration: none;">Publications page</a>.</p>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Field Experience, Workshops, & Trainings</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div><span style="font-weight: bold;">Dec 2024–Feb 2025:</span> 53-day cruise to Australian-Antarctic Ridge aboard <span style="font-style: italic;">R/V Nathaniel B. Palmer</span>, exploring hydrothermal sources of iron to a phytoplankton bloom</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Sept 2024:</span> Astrobiology Workshop at Crater Lake National Park in Oregon, thinking about ultraoligotrophy and designing missions.</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Sept 2023:</span> Astrobiology Workshop in New Mexico, thinking about White Sands National Park as an analogue for Mars and Carlsbad Caverns as extreme environments.</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Jan–Feb 2023:</span> 28-day cruise aboard <span style="font-style: italic;">R/V Thomas G. Thompson</span> cruise, studying biogeochemical transitions in the North Pacific</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">July 2022:</span> GEOTRACES Summer School in Bremerhaven, Germany, focused on polar parameters</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Apr–Jun 2022:</span> Docent training at Jasper Ridge Biological Preserve</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Sept–Nov 2021:</span> 52-day cruise to Southern East Pacific Rise aboard <span style="font-style: italic;">R/V Roger Revelle</span>, investigating trace metal stabilization in hydrothermal plumes.</div>
+                    <div style="margin-top: 1em;"><span style="font-weight: bold;">Jun–Aug 2019:</span> soil and invertebrate sampling at Jasper Ridge Biological Station over a 10-week internship.</div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Laboratory Skills & Experience</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div class="section-spacing" style="font-weight: bold;">Instruments/Methods</div>
+                    <div>High-performance liquid chromatography (HPLC)</div>
+                    <div>Inductively coupled plasma mass spectrometry (ICP-MS)</div>
+                    <div>Electrospray ionization Orbitrap mass spectrometry (ESI-MS)</div>
+                    <div>Competitive ligand exchange cathodic stripping voltammetry (CLE-CSV)</div>
+                    <div>Gas chromatography isotope-ratio mass spectrometry (GC-IRMS)</div>
+                    <div>Trace metal clean procedures</div>
+                    <div>Sampling and conducting experiments at-sea</div>
+                    <div class="section-spacing" style="font-weight: bold;">Data</div>
+                    <div>High proficiency with R</div>
+                    <div>Processing mass spectrometry data (ICP-MS, ESI-MS, and FT-ICR-MS)</div>
+                    <div>Profiency with oceanographic data software (ODV, SeaDAS, etc.)</div>
+                    <div>Basic familiarity with MATLAB and Python</div>
+                    <div>Familiarity with using remote sensing data</div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
+        <section style="display: flex; align-items: center;">
+            <div style="flex: 0 0 200px; margin-right: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div style="flex: 1;">
+                <h2 class="home-title">Outreach & Leadership</h2>
+                <div class="intro-text section-spacing" style="line-height: 1.7;">
+                    <div>Have mentored 3 undergraduate students while in graduate school, one who will start as a PhD student in September 2025.</div>
+                    <div class="section-spacing" style="font-weight: bold;">Current other roles:</div>
+                    <div class="section-spacing">
+                        <strong>Feb 2023–present</strong><br>
+                        Member<br>
+                        <span style="font-style: italic;">ARGO</span><br>
+                        <span style="font-size: 0.9em; font-style: italic;">graduate student leadership board at UW oceanography</span>
+                    </div>
+                    <div class="section-spacing">
+                        <strong>Oct 2022–present</strong><br>
+                        Radio Host & DJ<br>
+                        <span style="font-style: italic;">SPACE 101.1FM</span>
+                    </div>
+                    <div class="section-spacing">
+                        <strong>Oct 2022–present</strong><br>
+                        Habitat Interpreter<br>
+                        <span style="font-style: italic;">Seattle Aquarium</span>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 0 0 200px; margin-left: 40px; display: flex; align-items: center; justify-content: center;"></div>
+        </section>
     </main>
-
+    <footer>
+        <p>&copy; 2025 Patrick J. Monreal</p>
+    </footer>
     <script>
       // List of header images
       const headerImages = [
@@ -103,6 +334,5 @@
         document.querySelector('.hero-header').style.backgroundImage = `url('${randomImage}')`;
       });
     </script>
-
 </body>
 </html>
