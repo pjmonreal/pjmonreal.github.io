@@ -6,6 +6,11 @@
     <title>Pachanga! - Patrick J. Monreal</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        :root {
+            --main-forest: #02401B;
+            --main-forest-trans: rgba(2, 64, 27, 0.92);
+            --main-olive-light: #BBDAAF;
+        }
         .hamburger {
             display: none;
             cursor: pointer;
@@ -26,6 +31,233 @@
                 display: flex;
             }
         }
+        .jump-nav {
+            margin: 32px 0 48px 0;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .jump-nav strong {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .jump-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px 32px;
+            justify-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+            .jump-list {
+                grid-template-columns: 1fr;
+                max-width: 98vw;
+            }
+        }
+        .jump-list a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--main-forest);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+            padding: 8px 0;
+        }
+        .jump-list a:hover {
+            color: #176c3a;
+        }
+        .jump-list .show-link-title {
+            font-size: 1.08em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .jump-list .show-link-date {
+            font-size: 0.98em;
+            color: #555;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .playlist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 48px 0;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(50,26,90,0.07);
+            table-layout: fixed;
+        }
+        .playlist-table th, .playlist-table td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .playlist-table th {
+            background: var(--main-olive-light);
+            color: var(--main-forest);
+            font-weight: bold;
+        }
+        .playlist-table td {
+            background: #fff;
+        }
+        .show-title {
+            font-size: 1.5em;
+            color: var(--main-forest);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.12);
+            margin-top: 48px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .show-meta {
+            font-size: 1em;
+            color: #444;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 900px) {
+            .playlist-table th,
+            .playlist-table td {
+                font-size: 0.5em;
+                padding: 4px 2px;
+            }
+            .show-title {
+                font-size: 1em;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-header {
+            background-image: url('headers/pachanga_header.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            border: 5px solid var(--main-forest);
+            box-sizing: border-box;
+            position: relative;
+            padding-top: 110px;
+        }
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            background: var(--main-forest-trans);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px 20px 40px;
+            z-index: 200;
+            box-sizing: border-box;
+            backdrop-filter: blur(2px);
+        }
+        .header-left h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
+        }
+        .header-left p {
+            margin: 10px 0 0 0;
+            font-size: 1.4em;
+            font-weight: 300;
+            color: #fff;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.18);
+        }
+        .header-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        .header-right a.active,
+        .header-right a:hover {
+            background: var(--main-olive-light);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 900px) {
+            .header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 10px 10px 10px;
+            }
+            .header-left h1 {
+                font-size: 2.2em;
+            }
+            .header-left p {
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-header {
+                min-height: 60vh;
+                background-size: contain;
+                background-position: center;
+            }
+            .header-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        .jump-list a {
+            color: var(--main-forest);
+        }
+        .jump-list a:hover {
+            color: #176c3a;
+        }
+        .jump-list .show-link-title {
+            color: var(--main-forest);
+        }
+        .playlist-table th {
+            background: var(--main-olive-light);
+            color: var(--main-forest);
+            font-weight: bold;
+        }
+        .playlist-table td {
+            background: #fff;
+        }
+        .show-title {
+            color: var(--main-forest);
+            font-weight: 700;
+        }
+        footer {
+            background-color: var(--main-forest);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        @media (max-width: 900px) {
+            .pachanga-bio-flex {
+                flex-direction: column !important;
+                gap: 18px !important;
+            }
+            .pachanga-bio-flex .bio-logo {
+                margin: 0 auto !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -33,8 +265,8 @@
     <header class="hero-header">
         <div class="header-bar">
             <div class="header-left">
-                <h1>Patrick Monreal</h1>
-                <p>oceanography, trace metals, hydrothermal vents, astrobiology</p>
+                <h1>Pachanga!</h1>
+                <p>Thursdays 11AM on SPACE 101.1FM</p>
             </div>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
             <nav class="header-right">
@@ -55,54 +287,150 @@
     </script>
 
     <main>
-        <section>
-            <h2>Pachanga!</h2>
-            <p>Your pachanga content here.</p>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Patrick J. Monreal</p>
-        </footer>
+        <div class="pachanga-bio-flex" style="max-width: 1100px; margin: 0 auto; padding-top: 32px; display: flex; align-items: center; justify-content: center; gap: 32px;">
+            <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+            <div style="flex: 1;">
+                <div style="font-size:1.5em;font-weight:700;margin-bottom:12px; color: var(--main-forest);">What is Pachanga?</div>
+                <div style="font-size:1.18em; line-height: 1.7; margin-bottom: 48px; color: #222;">
+                    Pachanga, a Mexican slang word for party, is the name of my radio show on SPACE 101.1FM. I cross a lot of genres on Pachanga, from 70s/80s glam rock and new wave to more modern indie pop/rock, but generally try and keep an upbeat and lively mood. Each week I have a segment at the first or second break that discusses a cool new piece of science. Recently, I've discussed space junk crashing down from space, ancient trade routes revealed through isotopes, and dinosaurs in Jurassic park, and much more. Occassionally, I'll also throw in some themed playlists as well (red albums only, covers, song titles that are just numbers).<br><br>
+                    Check out the show playlists below, or the show page on the <a href="https://www.space101fm.org/program/pachanga/" target="_blank" style="color: var(--main-forest); font-weight: bold; text-decoration: underline;">SPACE 101.1FM website</a>.
+                </div>
+            </div>
+            <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+        </div>
+        <div class="jump-nav" id="jump-nav" style="margin-top: 48px;">
+            <div style="font-size:1.5em;font-weight:700;margin-bottom:18px; color: var(--main-forest);">Jump to a show:</div>
+            <div class="jump-list" id="jump-list"></div>
+        </div>
+        <div id="playlists"></div>
     </main>
 
+    <footer>
+        <p>&copy; 2025 Patrick J. Monreal</p>
+    </footer>
+
     <script>
-      // List of header images
-      const headerImages = [
-        'headers/IMG_5580.jpg',
-        'headers/IMG_3524.jpg',
-        'headers/IMG_3438.jpg',
-        'headers/IMG_3421.jpg',
-        'headers/IMG_0893.jpg',
-        'headers/IMG_0622.jpg',
-        'headers/IMG_0587.jpg',
-        'headers/IMG_0582.jpg',
-        'headers/IMG_0555.jpg',
-        'headers/IMG_0532.jpg',
-        'headers/IMG_0411.jpg',
-        'headers/IMG_0367.jpg',
-        'headers/IMG_0355.jpg',
-        'headers/IMG_0140.jpg',
-        'headers/IMG_0529.jpg',
-        'headers/IMG_9807.jpg',
-        'headers/IMG_9717.jpg',
-        'headers/IMG_9706.jpg',
-        'headers/IMG_9635.jpg',
-        'headers/IMG_8580.jpg',
-        'headers/IMG_8523.jpg',
-        'headers/IMG_8508.jpg',
-        'headers/IMG_8415.jpg',
-        'headers/IMG_8267.jpg',
-        'headers/IMG_8016.jpg',
-        'headers/IMG_7228.jpg',
-        'headers/IMG_7211.jpg',
-        'headers/IMG_7208.jpg'
-      ];
-      // Pick a random image
-      const randomImage = headerImages[Math.floor(Math.random() * headerImages.length)];
-      // Set as background for .hero-header
-      window.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.hero-header').style.backgroundImage = `url('${randomImage}')`;
-      });
+    // Helper: Parse CSV to array of objects
+    function parseCSV(csv) {
+        const lines = csv.split(/\r?\n/).filter(l => l.trim() !== '');
+        const headers = lines[0].split(',').map(h => h.replace(/(^["']|["']$)/g, ''));
+        const rows = lines.slice(1).map(line => {
+            const values = line.match(/("[^"]*"|[^,]+)/g) || [];
+            return headers.reduce((obj, h, i) => {
+                obj[h] = (values[i] || '').replace(/(^["']|["']$)/g, '');
+                return obj;
+            }, {});
+        });
+        console.log('Headers:', rows[0] ? Object.keys(rows[0]) : 'No rows');
+        console.log('First row:', rows[0]);
+        console.log('All rows:', rows);
+        return rows;
+    }
+    // Helper: Extract show number, title, date from filename and metadata
+    function parseShowMeta(filename, meta) {
+        // Example: Playlist-for-Pachanga!-#3-(Holiday)-12-22-22.csv
+        const match = filename.match(/#(\d+)(?:-\(([^)]+)\))?-(\d{1,2}-\d{1,2}-\d{2,4})/);
+        let showNum = match ? match[1] : '';
+        let showTitle = match && match[2] ? match[2] : '';
+        let showDate = match ? match[3].replace(/-/g, '/') : '';
+        // If meta has Playlist Title, use it
+        if (meta && meta["Playlist Title"] && meta["Playlist Title"].includes('#')) {
+            const titleMatch = meta["Playlist Title"].match(/#(\d+)(?: \(([^)]+)\))?/);
+            if (titleMatch) {
+                showNum = titleMatch[1];
+                if (titleMatch[2]) showTitle = titleMatch[2];
+            }
+        }
+        return { showNum, showTitle, showDate };
+    }
+    async function loadPlaylists() {
+        const manifestResp = await fetch('Pachanga-Playlists/playlist_files.json');
+        const files = await manifestResp.json();
+        // Sort by show number descending
+        files.sort((a, b) => {
+            const aNum = +(a.match(/#(\d+)/) || [0,0])[1];
+            const bNum = +(b.match(/#(\d+)/) || [0,0])[1];
+            return bNum - aNum;
+        });
+        const jumpList = document.getElementById('jump-list');
+        const playlistsDiv = document.getElementById('playlists');
+        for (const file of files) {
+            const resp = await fetch('Pachanga-Playlists/' + encodeURIComponent(file));
+            const text = await resp.text();
+            // Parse metadata (first 6 lines)
+            const metaLines = text.split(/\r?\n/).slice(0, 6);
+            const meta = {};
+            for (const line of metaLines) {
+                const m = line.match(/^"?([^"]+)"?,"?([^"]*)"?$/);
+                if (m) meta[m[1]] = m[2];
+            }
+            const { showNum, showTitle, showDate } = parseShowMeta(file, meta);
+            const anchor = `show-${showNum}`;
+            // Add to jump nav
+            const navLink = document.createElement('a');
+            navLink.href = `#${anchor}`;
+            navLink.innerHTML = `<span class="show-link-title">Show #${showNum}${showTitle ? ' (' + showTitle + ')' : ''}</span><span class="show-link-date">${showDate}</span>`;
+            jumpList.appendChild(navLink);
+            // Parse CSV for table
+            const rows = parseCSV(text.split(/\r?\n/).slice(7).join('\n'));
+            // Build table
+            const table = document.createElement('table');
+            table.className = 'playlist-table';
+            // Add colgroup for fixed column widths
+            const colgroup = document.createElement('colgroup');
+            colgroup.innerHTML = `
+                <col style="width:25%">
+                <col style="width:35%">
+                <col style="width:25%">
+                <col style="width:15%">
+            `;
+            table.appendChild(colgroup);
+            const thead = document.createElement('thead');
+            thead.innerHTML = `<tr><th>Artist</th><th>Song</th><th>Release</th><th>Label</th></tr>`;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            for (const row of rows) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row['Artist']||''}</td><td>${row['Song']||''}</td><td>${row['Release']||''}</td><td>${row['Label']||''}</td>`;
+                tbody.appendChild(tr);
+            }
+            table.appendChild(tbody);
+            // Show section
+            const showDiv = document.createElement('div');
+            showDiv.id = anchor;
+            showDiv.innerHTML = `<div class="show-title">Show #${showNum}${showTitle ? ' (' + showTitle + ')' : ''} <span style="font-size:0.8em;font-weight:400;">${showDate}</span></div>`;
+            showDiv.appendChild(table);
+            playlistsDiv.appendChild(showDiv);
+        }
+        // Call offset setup after jump links are created
+        if (typeof setupJumpOffsets === 'function') setupJumpOffsets();
+    }
+    loadPlaylists();
+    </script>
+    <script>
+    // Offset scroll for anchor links to account for header
+    function setupJumpOffsets() {
+        function getOffset() {
+            if (window.innerWidth <= 900) {
+                return 200;
+            } else {
+                return 175;
+            }
+        }
+        document.querySelectorAll('.jump-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    }
     </script>
 
 </body>
