@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Goose Soup - Patrick J. Monreal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Amphibactin_cropped.png">
+    <style>
+        :root {
+            --main-orange: #C8520A;
+            --main-orange-trans: rgba(200, 82, 10, 0.92);
+            --main-orange-light: #F7D0A8;
+            --main-forest: #02401B;
+            --main-forest-trans: rgba(2, 64, 27, 0.92);
+            --main-olive-light: #BBDAAF;
+        }
+
+        /* ── Fixed nav bar ── */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2em;
+            margin-left: auto;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .header-right {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right.active { display: flex; }
+        }
+
+        .hero-header {
+            background-image: url('mgs_header.png');
+            background-size: cover;
+            background-position: center 25%;
+            background-attachment: fixed;
+            min-height: 100vh;
+            border: 5px solid var(--main-orange);
+            box-sizing: border-box;
+            position: relative;
+            padding-top: 110px;
+        }
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            background: var(--main-orange-trans);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px 20px 40px;
+            z-index: 200;
+            box-sizing: border-box;
+            backdrop-filter: blur(2px);
+        }
+        .header-left h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
+        }
+        .header-left p {
+            margin: 10px 0 0 0;
+            font-size: 1.4em;
+            font-weight: 300;
+            color: #fff;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.25);
+        }
+        .header-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        .header-right a.active,
+        .header-right a:hover {
+            background: var(--main-orange-light);
+            color: #222;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 900px) {
+            .header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 10px 10px 10px;
+            }
+            .header-left h1 { font-size: 2.2em; }
+            .header-left p  { font-size: 1em; }
+        }
+        @media (max-width: 768px) {
+            .hero-header {
+                min-height: 60vh;
+                background-size: contain;
+                background-position: center 25%;
+            }
+            .header-bar { flex-direction: column; align-items: center; }
+        }
+
+        /* ── Shared table / show styles ── */
+        .playlist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 48px 0;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            table-layout: fixed;
+        }
+        .playlist-table th, .playlist-table td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .playlist-table td { background: #fff; }
+        @media (max-width: 900px) {
+            .playlist-table th,
+            .playlist-table td { font-size: 0.5em; padding: 4px 2px; }
+        }
+
+        /* ── MGS colour overrides ── */
+        .mgs-section .playlist-table th {
+            background: var(--main-orange-light);
+            color: var(--main-orange);
+            font-weight: bold;
+        }
+        .mgs-section .show-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--main-orange);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.12);
+            margin-top: 48px;
+            margin-bottom: 8px;
+        }
+        .mgs-section .jump-list a {
+            color: var(--main-orange);
+        }
+        .mgs-section .jump-list a:hover { color: #a04208; }
+        .mgs-section .jump-list .show-link-title { color: var(--main-orange); }
+
+        /* ── Pachanga colour overrides ── */
+        .pachanga-section .playlist-table th {
+            background: var(--main-olive-light);
+            color: var(--main-forest);
+            font-weight: bold;
+        }
+        .pachanga-section .show-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--main-forest);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.12);
+            margin-top: 48px;
+            margin-bottom: 8px;
+        }
+        .pachanga-section .jump-list a { color: var(--main-forest); }
+        .pachanga-section .jump-list a:hover { color: #176c3a; }
+        .pachanga-section .jump-list .show-link-title { color: var(--main-forest); }
+
+        /* ── Jump nav shared ── */
+        .jump-nav {
+            margin: 32px 0 48px 0;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .jump-nav strong { margin-bottom: 10px; font-size: 1.1em; }
+        .jump-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px 32px;
+            justify-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+            .jump-list { grid-template-columns: 1fr; max-width: 98vw; }
+            .pachanga-bio-flex { flex-direction: column !important; gap: 18px !important; }
+            .pachanga-bio-flex .bio-logo { margin: 0 auto !important; }
+        }
+        .jump-list a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+            padding: 8px 0;
+        }
+        .jump-list .show-link-title { font-size: 1.08em; font-weight: bold; text-align: center; }
+        .jump-list .show-link-date  { font-size: 0.98em; color: #555; font-weight: 400; text-align: center; margin-top: 2px; }
+
+        /* ── Pachanga inline banner ── */
+        .pachanga-old-header {
+            width: 100%;
+            margin-top: 48px;
+            display: block;
+            border: 5px solid var(--main-forest);
+            box-sizing: border-box;
+            background: #02401B;
+        }
+        .pachanga-old-header img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: middle;
+        }
+        .pachanga-banner {
+            background: var(--main-forest);
+            border: 5px solid var(--main-forest);
+            border-top: none;
+            color: #fff;
+            padding: 36px 40px 28px 40px;
+            margin-top: 0;
+            text-align: center;
+        }
+        .pachanga-banner h2 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.35);
+        }
+        .pachanga-banner p {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin: 0;
+            color: #fff;
+        }
+
+        /* ── Divider / scroll link ── */
+        .scroll-to-pachanga {
+            display: block;
+            text-align: center;
+            margin: 8px auto 24px auto;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--main-forest);
+            text-decoration: none;
+            padding: 14px 32px;
+            border: 2px solid var(--main-forest);
+            border-radius: 8px;
+            width: fit-content;
+            transition: background 0.2s, color 0.2s;
+        }
+        .scroll-to-pachanga:hover {
+            background: var(--main-forest);
+            color: #fff;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background-color: var(--main-orange);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <div class="header-bar">
+            <div class="header-left">
+                <h1>Moon Goose Soup</h1>
+                <p>Thursdays 8PM on SPACE 101.1FM</p>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <nav class="header-right">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="publications.html">Publications</a>
+                <a href="radio.html" class="active">Moon Goose Soup</a>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.header-right');
+            nav.classList.toggle('active');
+        }
+    </script>
+
+    <main>
+
+        <!-- ══════════════ MOON GOOSE SOUP SECTION ══════════════ -->
+        <div class="mgs-section">
+            <div class="pachanga-bio-flex" style="max-width: 1100px; margin: 0 auto; padding-top: 32px; display: flex; align-items: center; justify-content: center; gap: 32px;">
+                <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+                <div style="flex: 1;">
+                    <div style="font-size:1.18em; line-height: 1.7; margin-bottom: 48px; color: #222;">
+                        Live from Magnuson Park in Seattle, Moon Goose Soup is a radio show on SPACE 101.1FM on Thursday nights at 8pm. <span style="color: var(--main-orange); font-weight: bold;">What is a Moon Goose Soup, you ask?</span> Honestly, we don’t know either, but listen in with us as we find out. Hosts Sabrina &amp; PJ play a mix of classic and alternative rock, new wave, glam rock, and latin music, intricately blending genres like a well balanced soup … a moon goose soup. We typically keep it upbeat and light. Every week we also discuss a cool new piece of research, combining music with science communication. Tune in to the coolest little radio station in the galaxy every Thursday at 8PM for some Moon Goose Soup!<br><br>
+                        Check out the show playlists below, or the show page on the <a href="https://www.space101fm.org/program/moon-goose-soup/" target="_blank" style="color: var(--main-orange); font-weight: bold; text-decoration: underline;">SPACE 101.1FM website</a>.
+                    </div>
+                </div>
+                <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+            </div>
+
+            <a href="#pachanga-section" class="scroll-to-pachanga">
+                Click here to see playlists from Pachanga, my old show.<br>
+                <span style="font-weight: 500; font-size: 0.9em;">Or any of the orange shows below to jump to Moon Goose Soup playlists</span>
+            </a>
+
+            <div class="jump-nav" style="margin-top: 48px;">
+                <div style="font-size:1.5em;font-weight:700;margin-bottom:18px; color: var(--main-orange);">Jump to a show:</div>
+                <div class="jump-list" id="mgs-jump-list"></div>
+            </div>
+            <div id="mgs-playlists"></div>
+        </div>
+
+        <!-- ══════════════ PACHANGA SECTION ══════════════ -->
+        <div class="pachanga-section" id="pachanga-section">
+            <div class="pachanga-old-header">
+                <img src="headers/pachanga_header.png" alt="Pachanga! show header art">
+            </div>
+            <div class="pachanga-banner">
+                <h2>Pachanga!</h2>
+                <p>Thursdays 11AM on SPACE 101.1FM</p>
+            </div>
+
+            <div class="pachanga-bio-flex" style="max-width: 1100px; margin: 0 auto; padding-top: 32px; display: flex; align-items: center; justify-content: center; gap: 32px;">
+                <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+                <div style="flex: 1;">
+                    <div style="font-size:1.5em;font-weight:700;margin-bottom:12px; color: var(--main-forest);">What is Pachanga?</div>
+                    <div style="font-size:1.18em; line-height: 1.7; margin-bottom: 48px; color: #222;">
+                        Pachanga, a Mexican slang word for party, was the name of my solo radio show on SPACE 101.1FM. I crossed a lot of genres on Pachanga — from 70s/80s glam rock and new wave to more modern indie pop/rock. Each week I had a segment at the first or second break that discussed a cool new piece of science, similar to what we do on Moon Goose Soup now. I discussed space junk crashing down from space, ancient trade routes revealed through isotopes, dinosaurs in Jurassic park, and much more.<br><br>
+                        Check out the old playlists below, or the show page on the <a href="https://www.space101fm.org/program/pachanga/" target="_blank" style="color: var(--main-forest); font-weight: bold; text-decoration: underline;">SPACE 101.1FM website</a>.
+                    </div>
+                </div>
+                <img class="bio-logo" src="space101fm-logo-lg.jpg" alt="SPACE 101.1FM logo" style="width: 110px; min-width: 80px; max-width: 18vw; height: auto; display: block;" />
+            </div>
+
+            <div class="jump-nav" style="margin-top: 48px;">
+                <div style="font-size:1.5em;font-weight:700;margin-bottom:18px; color: var(--main-forest);">Jump to a show:</div>
+                <div class="jump-list" id="pachanga-jump-list"></div>
+            </div>
+            <div id="pachanga-playlists"></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Patrick J. Monreal</p>
+    </footer>
+
+    <script>
+    function parseCSV(csv) {
+        const lines = csv.split(/\r?\n/).filter(l => l.trim() !== '');
+        const headers = lines[0].split(',').map(h => h.replace(/(^["']|["']$)/g, ''));
+        const rows = lines.slice(1).map(line => {
+            const values = line.match(/("[^"]*"|[^,]+)/g) || [];
+            return headers.reduce((obj, h, i) => {
+                obj[h] = (values[i] || '').replace(/(^["']|["']$)/g, '');
+                return obj;
+            }, {});
+        });
+        return rows;
+    }
+
+    function parseShowMeta(filename, meta) {
+        const match = filename.match(/#(\d+)(?:-\(([^)]+)\))?-(\d{1,2}-\d{1,2}-\d{2,4})/);
+        let showNum = match ? match[1] : '';
+        let showTitle = match && match[2] ? match[2] : '';
+        let showDate = match ? match[3].replace(/-/g, '/') : '';
+        if (meta && meta["Playlist Title"] && meta["Playlist Title"].includes('#')) {
+            const titleMatch = meta["Playlist Title"].match(/#(\d+)(?: \(([^)]+)\))?/);
+            if (titleMatch) {
+                showNum = titleMatch[1];
+                if (titleMatch[2]) showTitle = titleMatch[2];
+            }
+        }
+        return { showNum, showTitle, showDate };
+    }
+
+    function buildPlaylistSection(file, text, anchorPrefix, jumpListEl, playlistsEl) {
+        const allLines = text.split(/\r?\n/);
+        // Find the track header row (Date,Artist,...) — MGS files omit Show Description
+        const headerIdx = allLines.findIndex(l => /^"?Date"?\s*,\s*"?Artist"?/i.test(l.trim()));
+        const metaLines = allLines.slice(0, headerIdx === -1 ? 6 : headerIdx);
+        const meta = {};
+        for (const line of metaLines) {
+            const m = line.match(/^"?([^"]+)"?,"?([^"]*)"?$/);
+            if (m) meta[m[1]] = m[2];
+        }
+        const { showNum, showTitle, showDate } = parseShowMeta(file, meta);
+        const anchor = `${anchorPrefix}-show-${showNum}`;
+
+        // Jump nav link
+        const navLink = document.createElement('a');
+        navLink.href = `#${anchor}`;
+        navLink.innerHTML = `<span class="show-link-title">Show #${showNum}${showTitle ? ' (' + showTitle + ')' : ''}</span><span class="show-link-date">${showDate}</span>`;
+        jumpListEl.appendChild(navLink);
+
+        // Table — start at the Date/Artist header row
+        const tableStart = headerIdx === -1 ? 7 : headerIdx;
+        const rows = parseCSV(allLines.slice(tableStart).join('\n'));
+        const table = document.createElement('table');
+        table.className = 'playlist-table';
+        const colgroup = document.createElement('colgroup');
+        colgroup.innerHTML = `<col style="width:25%"><col style="width:35%"><col style="width:25%"><col style="width:15%">`;
+        table.appendChild(colgroup);
+        const thead = document.createElement('thead');
+        thead.innerHTML = `<tr><th>Artist</th><th>Song</th><th>Release</th><th>Label</th></tr>`;
+        table.appendChild(thead);
+        const tbody = document.createElement('tbody');
+        for (const row of rows) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${row['Artist']||''}</td><td>${row['Song']||''}</td><td>${row['Release']||''}</td><td>${row['Label']||''}</td>`;
+            tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+
+        const showDiv = document.createElement('div');
+        showDiv.id = anchor;
+        showDiv.innerHTML = `<div class="show-title">Show #${showNum}${showTitle ? ' (' + showTitle + ')' : ''} <span style="font-size:0.8em;font-weight:400;">${showDate}</span></div>`;
+        showDiv.appendChild(table);
+        playlistsEl.appendChild(showDiv);
+    }
+
+    async function loadMGS() {
+        const resp = await fetch('MoonGooseSoup-Playlists/mgs_playlist_files.json');
+        const files = await resp.json();
+        files.sort((a, b) => {
+            const aNum = +(a.match(/#(\d+)/) || [0,0])[1];
+            const bNum = +(b.match(/#(\d+)/) || [0,0])[1];
+            return bNum - aNum;
+        });
+        const jumpList = document.getElementById('mgs-jump-list');
+        const playlistsDiv = document.getElementById('mgs-playlists');
+        for (const file of files) {
+            const r = await fetch('MoonGooseSoup-Playlists/' + encodeURIComponent(file));
+            const text = await r.text();
+            buildPlaylistSection(file, text, 'mgs', jumpList, playlistsDiv);
+        }
+        setupJumpOffsets();
+    }
+
+    async function loadPachanga() {
+        const resp = await fetch('Pachanga-Playlists/playlist_files.json');
+        const files = await resp.json();
+        files.sort((a, b) => {
+            const aNum = +(a.match(/#(\d+)/) || [0,0])[1];
+            const bNum = +(b.match(/#(\d+)/) || [0,0])[1];
+            return bNum - aNum;
+        });
+        const jumpList = document.getElementById('pachanga-jump-list');
+        const playlistsDiv = document.getElementById('pachanga-playlists');
+        for (const file of files) {
+            const r = await fetch('Pachanga-Playlists/' + encodeURIComponent(file));
+            const text = await r.text();
+            buildPlaylistSection(file, text, 'pachanga', jumpList, playlistsDiv);
+        }
+        setupJumpOffsets();
+    }
+
+    loadMGS();
+    loadPachanga();
+
+    function setupJumpOffsets() {
+        function getOffset() { return window.innerWidth <= 900 ? 200 : 175; }
+        document.querySelectorAll('.jump-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        // Also handle the scroll-to-pachanga button
+        document.querySelectorAll('.scroll-to-pachanga').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+    </script>
+
+</body>
+</html>
